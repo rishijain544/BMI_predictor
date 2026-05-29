@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>BMI Predictor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- DARK LIGHT TOGGLE -->
+
+    <div class="toggle-container">
+
+        <button id="theme-toggle">
+            🌙
+        </button>
+
+    </div>
+
+    <!-- MAIN CONTAINER -->
+
+    <div class="container">
+
+        <h1>BMI Predictor</h1>
+
+        <p class="subtitle">
+
+            Predict BMI based on
+            Age, Gender, Number of Children
+            and Medical Charges
+
+        </p>
+
+        <!-- FORM -->
+
+        <form action="/predict"
+              method="POST">
+
+            <!-- AGE -->
+
+            <input type="number"
+                   name="age"
+                   placeholder="Enter Age"
+                   required>
+
+            <!-- GENDER -->
+
+            <select name="sex"
+                    required>
+
+                <option value="">
+                    Select Gender
+                </option>
+
+                <option value="male">
+                    Male
+                </option>
+
+                <option value="female">
+                    Female
+                </option>
+
+            </select>
+
+            <!-- CHILDREN -->
+
+            <input type="number"
+                   name="children"
+                   placeholder="Enter Number of Children"
+                   required>
+
+            <!-- CHARGES -->
+
+            <input type="number"
+                   step="any"
+                   name="charges"
+                   placeholder="Enter Medical Charges"
+                   required>
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+                    class="predict-btn">
+
+                Predict BMI
+
+            </button>
+
+        </form>
+
+        <!-- RESULT -->
+
+        {% if prediction_text %}
+
+        <div class="result">
+
+            <h2>
+
+                {{ prediction_text }}
+
+            </h2>
+
+            <p class="category">
+
+                Health Status :
+                {{ category }}
+
+            </p>
+
+        </div>
+
+        {% endif %}
+
+        <!-- BMI RANGE -->
+
+        <div class="health-range">
+
+            <h3>
+                BMI Health Range
+            </h3>
+
+            <div class="range-card underweight">
+
+                <span>
+                    Underweight
+                </span>
+
+                <span>
+                    Below 18.5
+                </span>
+
+            </div>
+
+            <div class="range-card normal">
+
+                <span>
+                    Normal
+                </span>
+
+                <span>
+                    18.5 - 24.9
+                </span>
+
+            </div>
+
+            <div class="range-card overweight">
+
+                <span>
+                    Overweight
+                </span>
+
+                <span>
+                    25 - 29.9
+                </span>
+
+            </div>
+
+            <div class="range-card obesity">
+
+                <span>
+                    Obesity
+                </span>
+
+                <span>
+                    30 and Above
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const toggleBtn =
+        document.getElementById("theme-toggle");
+
+        toggleBtn.addEventListener("click", () => {
+
+            document.body.classList.toggle("light-mode");
+
+            if(document.body.classList.contains("light-mode")){
+
+                toggleBtn.innerHTML = "☀️";
+
+            }
+
+            else{
+
+                toggleBtn.innerHTML = "🌙";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

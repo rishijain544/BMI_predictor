@@ -1,0 +1,471 @@
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:'Poppins', sans-serif;
+}
+
+/* BODY */
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.75)
+    ),
+    url("images/bmi-bg.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    transition:0.5s;
+}
+
+/* LIGHT MODE */
+
+body.light-mode{
+
+    background:
+    linear-gradient(
+    rgba(255,255,255,0.7),
+    rgba(255,255,255,0.7)
+    ),
+    url("images/bmi-bg.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+}
+
+/* TOGGLE BUTTON */
+
+.toggle-container{
+
+    position:absolute;
+
+    top:20px;
+    right:20px;
+}
+
+#theme-toggle{
+
+    width:55px;
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    background:white;
+
+    box-shadow:
+    0 0 20px rgba(0,0,0,0.4);
+
+    transition:0.3s;
+}
+
+#theme-toggle:hover{
+
+    transform:
+    scale(1.1)
+    rotate(10deg);
+}
+
+/* MAIN CARD */
+
+.container{
+
+    width:450px;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(18px);
+
+    border:
+    1px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+    0 8px 32px rgba(0,0,0,0.5),
+    inset 0 0 12px rgba(255,255,255,0.08);
+
+    animation:
+    float 4s ease-in-out infinite;
+
+    transition:0.5s;
+}
+
+body.light-mode .container{
+
+    background:
+    rgba(255,255,255,0.45);
+}
+
+/* FLOATING EFFECT */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+    }
+
+    100%{
+
+        transform:translateY(0px);
+    }
+}
+
+/* TITLE */
+
+h1{
+
+    text-align:center;
+
+    color:white;
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+    text-shadow:
+    0 0 10px #00c3ff,
+    0 0 20px #0077ff,
+    0 0 40px #7c3aed;
+}
+
+body.light-mode h1{
+
+    color:#111;
+
+    text-shadow:none;
+}
+
+/* SUBTITLE */
+
+.subtitle{
+
+    text-align:center;
+
+    color:#ddd;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+body.light-mode .subtitle{
+
+    color:#222;
+}
+
+/* INPUTS */
+
+input,
+select{
+
+    width:100%;
+
+    padding:15px;
+
+    margin:12px 0;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    background:
+    rgba(255,255,255,0.12);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:0.3s;
+}
+
+body.light-mode input,
+body.light-mode select{
+
+    background:
+    rgba(0,0,0,0.05);
+
+    color:#111;
+}
+
+input::placeholder{
+
+    color:#ddd;
+}
+
+body.light-mode input::placeholder{
+
+    color:#555;
+}
+
+select option{
+
+    color:black;
+}
+
+/* INPUT FOCUS */
+
+input:focus,
+select:focus{
+
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 15px rgba(255,255,255,0.3);
+}
+
+/* BUTTON */
+
+.predict-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:20px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #2563eb,
+    #7c3aed
+    );
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.predict-btn:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.02);
+
+    box-shadow:
+    0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* RESULT */
+
+.result{
+
+    margin-top:25px;
+
+    padding:20px;
+
+    border-radius:16px;
+
+    background:
+    rgba(255,255,255,0.1);
+
+    text-align:center;
+
+    animation:
+    fadeIn 1s ease;
+}
+
+.result h2{
+
+    color:white;
+
+    margin-bottom:10px;
+}
+
+.category{
+
+    color:#00ffae;
+
+    font-size:18px;
+
+    font-weight:600;
+}
+
+body.light-mode .result h2{
+
+    color:#111;
+}
+
+body.light-mode .category{
+
+    color:#0f766e;
+}
+
+/* HEALTH RANGE */
+
+.health-range{
+
+    margin-top:30px;
+}
+
+.health-range h3{
+
+    color:white;
+
+    text-align:center;
+
+    margin-bottom:15px;
+}
+
+body.light-mode .health-range h3{
+
+    color:#111;
+}
+
+/* RANGE CARD */
+
+.range-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 16px;
+
+    margin:12px 0;
+
+    border-radius:14px;
+
+    color:white;
+
+    font-weight:500;
+
+    transition:0.3s;
+}
+
+.range-card:hover{
+
+    transform:scale(1.03);
+}
+
+/* COLORS */
+
+.underweight{
+
+    background:
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #06b6d4
+    );
+}
+
+.normal{
+
+    background:
+    linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+    );
+}
+
+.overweight{
+
+    background:
+    linear-gradient(
+    135deg,
+    #f59e0b,
+    #f97316
+    );
+}
+
+.obesity{
+
+    background:
+    linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+    );
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:500px){
+
+    .container{
+
+        width:100%;
+    }
+
+    h1{
+
+        font-size:32px;
+    }
+}
