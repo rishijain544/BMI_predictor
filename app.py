@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
+from pathlib import Path
 
 app = Flask(__name__)
 
 # load model
-model = pickle.load(open("model.pkl", "rb"))
+MODEL_PATH = Path(__file__).resolve().parent / "model.pkl"
+model = pickle.load(open(MODEL_PATH, "rb"))
 
 @app.route("/")
 def home():
